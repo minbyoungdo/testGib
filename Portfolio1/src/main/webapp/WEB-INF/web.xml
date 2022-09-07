@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+<security-role>
+	<description></description>
+	<role-name>admin</role-name>
+</security-role>
+
+<security-constraint>
+		<web-resource-collection>
+			<display-name>WebMarket Security</display-name>
+			<!-- 웹 자원에 대한 접근을 설정 -->
+			<web-resource-collection>
+				<web-resource-name>WebMarket</web-resource-name><!--웹자원의 이름을 설정 생략가능-->
+				<description></description>
+				<url-pattern>/addProduct.jsp</url-pattern><!-- 접근 제한을 요청할 url설정 -->
+				<url-pattern>/editProduct.jsp</url-pattern>
+			</web-resource-collection>
+		</web-resource-collection>
+		<!-- 웹 자원에 접근할 수 있는 인증된 사용자를 설정합니다. -->
+		<auth-constraint>
+			<description>권한 관리자명</description><!-- 설명문 -->
+			<role-name>admin</role-name><!-- 권한이 부여된 사용자의 이름 -->
+		</auth-constraint>
+</security-constraint>
+<!--  -->
+<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login_failed.jsp</form-error-page>
+		</form-login-config>
+</login-config>
+</web-app>
