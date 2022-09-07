@@ -23,7 +23,20 @@ public class FoodRepository
 	{
 		return FoodList;
 	}
-	/*
-	 * public Food getFoodById(String foodname) { return a; }
-	 */
+
+	  public Food getFoodById(String foodname) 
+	  { 
+		  Food foodById = null;
+		  for(int i=0; i< FoodList.size(); i++)
+		  {
+			  Food food = FoodList.get(i);
+			  if(food != null && food.getName() != null && food.getName().equals(foodname))
+			  {
+				  foodById = food;
+				  break;
+			  }
+		  }
+		  return foodById;
+	  }
+	 
 }
