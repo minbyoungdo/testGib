@@ -15,10 +15,10 @@
     <%--   <c:choose>
       	<c:when test="${empty sessionId}"> --%>
         <li class="nav-item">
-          <a class="nav-link active" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로그인</font></font></span></a>
+          <a class="nav-link active" href="./login.jsp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로그인</font></font></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원가입</font></font></a>
+          <a class="nav-link" href="./addMember.jsp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원가입</font></font></a>
         </li>
       <%--   </c:when>
         <c:otherwise>
@@ -30,7 +30,7 @@
        		</li>
         </c:otherwise> --%>
           <li class="nav-item">
-          <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">게시판</font></font></a>
+          <a class="nav-link" href="./broad_List"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">게시판</font></font></a>
         </li>
          <%-- </c:choose> --%>
         <!-- <li class="nav-item dropdown">
