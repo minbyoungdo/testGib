@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
 <%
-String Id = session.getId();
+String FavoriteId = session.getId();
 %>
 <title>즐겨 찾기</title>
 </head>
@@ -41,12 +41,13 @@ String Id = session.getId();
 				<td><%=f.getKakaomap() %></td>
 				<td><%=f.getBestfood()%></td>
 				<td><%= f.getGrade() %></td>
+				<td><a href="./deleteCart.jsp?FavoriteId=<%=FavoriteId %>" class= "btn btn-danger">삭제하기</a></td>
 			</tr>
 			<%
 				}
 			%>
 		</table>
-		<a href=".foods.jsp" class="btn btn-secondary">&laquo;홈 화면으로 이동</a>
+		<a href="./foods.jsp" class="btn btn-light">&laquo;상위 탭으로 이동</a>
 	</div>
 </body>
 </html>

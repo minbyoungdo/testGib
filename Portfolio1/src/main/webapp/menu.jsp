@@ -12,28 +12,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav ml-auto">
-    <%--   <c:choose>
-      	<c:when test="${empty sessionId}"> --%>
+     <c:choose>
+      	<c:when test="${empty sessionId}">
         <li class="nav-item">
           <a class="nav-link active" href="./login.jsp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로그인</font></font></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./addMember.jsp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원가입</font></font></a>
         </li>
-      <%--   </c:when>
+       </c:when>
         <c:otherwise>
          	<li class="nav-item">
-          	<a class="nav-link active" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로그아웃</font></font></span></a>
+          	<a class="nav-link active" href="./LogoutUser.jsp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로그아웃</font></font></span></a>
         	</li>
         	<li class="nav-item">
-         	 <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 정보</font></font></a>
+         	 <a class="nav-link" href="./editUser.jsp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 정보</font></font></a>
        		</li>
-        </c:otherwise> --%>
+        </c:otherwise>
+        </c:choose> 
           <li class="nav-item">
           <a class="nav-link" href="./broad_List"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">게시판</font></font></a>
         </li>
-         <%-- </c:choose> --%>
-        <!-- <li class="nav-item dropdown">
+        
+        
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">쓰러지 다</font></font></a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></a>
@@ -42,7 +44,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></a>
           </div>
-        </li> -->
+        </li> 
        
       </ul>
       <form class="d-flex">

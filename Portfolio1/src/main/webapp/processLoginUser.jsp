@@ -12,19 +12,19 @@
 
 <sql:setDataSource var="dataSource"
 	url="jdbc:oracle:thin:@localhost:1521:orcl" 
-	driver="oracle.jdbc.driver.OracleDriver" user="webmarketDB" password="web1234" /> 
+	driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> 
 
 <sql:query dataSource="${dataSource}" var="resultSet">
-   SELECT * FROM MEMBER WHERE ID=? and password=?  
+   SELECT * FROM USERS WHERE ID=? and password=?  
    <sql:param value="<%=id%>" />
 	<sql:param value="<%=password%>" />
 </sql:query>
 
 <c:forEach var="row" items="${resultSet.rows}">
 	<%
-		session.setAttribute("sessionId", id);
+		session.setAttribute("sessionId", id);//sessionid 를 session에 저장해놓음.
 	%>
-	<c:redirect url="resultMember.jsp?msg=2" />
+	<c:redirect url="MainHome.jsp"/>
 </c:forEach>
 
-<c:redirect url="loginMember.jsp?error=1" />
+<c:redirect url="resultUserPage.jsp?msg=2"/>

@@ -1,12 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@include file="dbconn.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<link rel ="stylesheet" href ="../resources/css/bootstrap.min.css" />
+<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
 <link rel="shortcut icon" href="#">
+<script type="text/javascript">
+function check()
+{
+    let form ="addMember";
+
+if (!document.forms[form].elements["id"].value) 
+{
+	alert("아이디를 입력하세요.");
+	return false;
+}
+if (!document.forms[form].elements["password"].value) 
+{
+	alert("비밀번호를 입력하세요.");
+	return false;
+}
+if (document.forms[form].elements["password"].value != document.forms[form].elements["password2"].value) 
+{
+	alert("비밀번호를 동일하게 입력하세요.");
+	return false;
+}
+if (!document.forms[form].elements["name"].value) 
+{
+	alert("반드시 이름을 입력하세요.");
+	return false;
+}
+}
+</script>
 <title>회원 가입 페이지</title>
 </head>
 <body>
@@ -16,7 +43,7 @@
 		<h1 class="display-3">회원 가입</h1>
 	</div>
 	<div class="container">
-		<form name = "addMenber" class="form-horizontal" action="processAddMenber.jsp" method="post">
+		<form name = "addMember" class="form-horizontal" action="./ProcessAddUsers.jsp" method="post" onsubmit="return check()">
 			<div class="form-group row">
 				<label class="col-sm-2">*아이디 : </label>
 				<div class="col-sm-3"><input type="text" name="id" id="id" class="form-control" placeholder="아이디를 입력하시오." autofocus></div>
@@ -66,7 +93,6 @@
 					<option value="naver.com" name ="email2">naver.com</option>
 					<option value="google.com" name="email2">google.com</option>
 					</select>
-				
 			</div>
 			<div class ="form-group row">
 			<label class="col-sm-2">전화번호 : </label>

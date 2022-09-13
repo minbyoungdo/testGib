@@ -17,16 +17,14 @@
 </div>
 <div class= "container">
 	<div class = "row" align ="center">
-	<%-- <%@ include file="dbconn.jsp" %>
+	<%@ include file="dbconn.jsp" %>
 		<%
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = "select * from product";
+			String sql = "select * from food";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-		%> --%>
-		<div class ="col-md-4">
+		%>
+	<!-- 	<div class ="col-md-4">
 		<img src="./resources/images/P1234.png" style ="width:100%; height: auto;">
 		<h3>식당명 : </h3>
 		<p>등록번호 : </p>
@@ -43,8 +41,15 @@
 		<h3>식당명 : </h3>
 		<p>등록번호 : </p>
 		<p>추천 메뉴(가격) : </p>
+		</div> -->
+		<div class ="col-md-4">
+			<img src="./upload/<%=rs.getString("iamgefile") %>" style="width:100%">
+			<h3>식당명 :  <%=rs.getString("name")%></h3>
+			<p>추천 메뉴 : <%=rs.getString("bestfood") %></p>
+			<p>평점 : <%=rs.getString("grade") %></p>
+			<p><a href="./food.jsp?name=<%=rs.getString("name")%>" class="btn btn-info" role ="button">상제정보 &raquo;</a></p>
 		</div>
-		<%-- <% 
+		<% 
 		} 
 		if( rs!= null)
 			rs.close();
@@ -52,7 +57,7 @@
 			pstmt.close();
 		if(conn != null)
 			conn.close();
-		%> --%>
+		%>
 	</div>
 	<hr>
 </div>

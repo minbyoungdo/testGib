@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ page import="java.util.*"%>
+<%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@include file="dbconn.jsp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	
@@ -19,24 +20,30 @@
 	String phone = request.getParameter("phone");
 	String address = request.getParameter("address");
 	//가입날짜?
-	Date currentDatetime = new Date(System.currentTimeMillis());
+/* 	java.sql.Date currentDatetime = new java.sql.Date(System.currentTimeMillis());
+	java.sql.Date sqlDate= new java.sql.Date(currentDatetime.getTime());
+	java.sql.Timestamp timestamp = new java.sql.Timestamp(currentDatetime.getTime()); */
+	java.util.Date currentDatetime = new java.util.Date(System.currentTimeMillis());
 	java.sql.Date sqlDate= new java.sql.Date(currentDatetime.getTime());
 	java.sql.Timestamp timestamp = new java.sql.Timestamp(currentDatetime.getTime());
-%>
-
-<sql:setDataSource var="dataSource"
-	url="jdbc:oracle:thin:@localhost:1521:orcl" 
-	driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> 
 	
-<sql:update dataSource="${dataSource}" var="resultSet">
-	INSERT INTO member VALUES(?,?,?,?,?,?,?,?,?);
-	<sql:param value="<%=id %>"/>
-	<sql:param value="<%=password %>"/>
-	<sql:param value="<%=name %>"/>
-	<sql:param value="<%=gender %>"/>
-	<sql:param value="<%=birth %>"/>
-	<sql:param value="<%=email %>"/>
-	<sql:param value="<%=phone%>"/>
-	<sql:param value="<%=address %>"/>
-	<sql:param value="<%=timestamp %>"/>
-</sql:update>
+	String sql = "insert into users values(?,?,?,?,?,?,?,?,?)";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, id);
+	pstmt.setString(2, password);
+	pstmt.setString(3, name);
+	pstmt.setString(4, gender);
+	pstmt.setString(5, birth);
+	pstmt.setString(6, email);
+	pstmt.setString(7, phone);
+	pstmt.setString(8, address);
+	pstmt.setInt(9, 0);//관리자는 1 나머지 숫자는 유저
+	pstmt.executeUpdate();
+	
+	if (pstmt != null)
+ 		pstmt.close();
+ 	if (conn != null)
+		conn.close();
+	
+ 	response.sendRedirect("MainHome.jsp");
+%>
