@@ -30,12 +30,20 @@
        		</li>
         </c:otherwise>
         </c:choose> 
-          <li class="nav-item">
+     <!--      <li class="nav-item">
           <a class="nav-link" href="./broad_List"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">게시판</font></font></a>
+        </li> -->
+ 		 <li class="nav-item">
+          <a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">
+          <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          게시판</font></font></a>
+<%--        <a class="nav-link" href="<c:url value="./board/b_list.jsp.do?pageNum=1"/>">
+          <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          게시판</font></font></a> --%>
         </li>
         
         
-        <li class="nav-item dropdown">
+<!--         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">쓰러지 다</font></font></a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></a>
@@ -50,7 +58,7 @@
       <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="검색">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">검색</font></font></button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>
