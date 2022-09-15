@@ -34,7 +34,7 @@
           <a class="nav-link" href="./broad_List"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">게시판</font></font></a>
         </li> -->
  		 <li class="nav-item">
-          <a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">
+          <a class="nav-link" href="<c:url value="BoardListAction.do?pageNum=1"/>">
           <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
           게시판</font></font></a>
 <%--        <a class="nav-link" href="<c:url value="./board/b_list.jsp.do?pageNum=1"/>">
