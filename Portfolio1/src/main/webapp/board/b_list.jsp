@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="mvc.model.BoardDTO"%>
+<%@ page import="mvc.model.BoardDTO1"%>
 <%
-	String sessionId =(String) session.getAttribute("sessionId");
-	List boardList = (List)request.getAttribute("boardlist");
+String sessionId =(String) session.getAttribute("sessionId");
+	List boardList = (List)request.getAttribute("boardlist1");
 	int total_record = ((Integer)request.getAttribute("total_record")).intValue();
 	int pageNum = ((Integer)request.getAttribute("pageNum")).intValue();
 	int total_page =((Integer)request.getAttribute("total_page")).intValue();
@@ -12,9 +12,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css"/>
 <meta charset="utf-8">
-<title>Board</title>
+<title>게시판</title>
 <script type="text/javascript">
 	function checkForm()
 	{
@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../menu.jsp"/>
+<jsp:include page="../menu.jsp"/>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">게시판</h1>
@@ -39,7 +39,7 @@
 			<div>
 				<div class="text-rigth">
 					<span class="badge badge-success">
-						<%=total_record%>전
+						<%=total_record%>page
 					</span>
 				</div>
 			</div>
@@ -53,9 +53,9 @@
 						<th>글쓴이</th>
 					</tr>
 					<%
-									for(int j=0; j<boardList.size(); j++)
+					for(int j=0; j<boardList.size(); j++)
 									{
-										BoardDTO notice = (BoardDTO) boardList.get(j);
+										BoardDTO1 notice = (BoardDTO1) boardList.get(j);
 					%>
 					<tr>
 						<td><%=notice.getNum() %></td>
@@ -102,6 +102,5 @@
 			</div>
 		</form>
 	</div>
-	<jsp:include page="../footer.jsp" />
 </body>
 </html>

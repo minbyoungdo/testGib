@@ -12,7 +12,7 @@
 
 <sql:setDataSource var="dataSource"
 	url="jdbc:oracle:thin:@localhost:1521:orcl" 
-	driver="oracle.jdbc.driver.OracleDriver" user="webmarketDB" password="web1234" /> 
+	driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> 
 
 <sql:query dataSource="${dataSource}" var="resultSet">
    SELECT * FROM MEMBER WHERE ID=? and password=?  
