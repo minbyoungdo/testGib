@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@ page import="mvc.model.BoardDTO1"%>
 
 <%
 	BoardDTO1 notice = (BoardDTO1) request.getAttribute("board");
-	int num = ((Integer) request.getAttribute("num")).intValue();
+	/* int number = ((Integer) request.getAttribute("num")).intValue(); */
+	int number = notice.getNum();
 	int nowpage = ((Integer) request.getAttribute("page")).intValue();
 %>
 <!DOCTYPE html>
@@ -21,11 +21,12 @@
 		<h1 class="mt-3">게시글</h1>
 		<div class="card mb-4">
 			<div class="card-body">
-				<form name="newUpdate" action="BoardUpdateAction.do?num<%=notice.getNum()%>&pageNum<%=nowpage %>"
-		class="form-horizontal" method="post">
+				<form name="newUpdate" action="BoardUpdateAction.do?number=<%=notice.getNum()%>&pageNum=<%=nowpage %>
+				&name=<%=notice.getName() %>"
+			class="form-horizontal" method="post">
 				<div class="row">
 					<div class="col-sm-2">
-						<label for="num" class="form-label">num</label> <input type="text"
+						<label for="num" class="form-label">게시글 번호</label> <input type="text"
 							class="form-control" id="num" name="num" value="<%=notice.getNum()%>"
 							disabled>
 					</div>
@@ -41,14 +42,14 @@
 					</div>
 				</div>
 					<div class="mb-2">
-						<label for="writer" class="form-label">제목</label> <input
-							type="text" class="form-control" id="subject" name="subject"
-							value="<%= notice.getSubject() %>" disabled>
+						<label for="writer" class="form-label">제목</label> 
+						<input type="text" class="form-control" id="subject1" name="subject1"
+							value="<%= notice.getSubject() %>" >
 					</div>
 					<div class="mb-3">
 						<label for="content" class="form-label">내용</label>
-						<textarea class="form-control" id="content" name="content" cols="50" rows="5"
-							><%=notice.getContent() %></textarea>
+						<textarea class="form-control" id="content1" name="content1" cols="50" rows="5"
+							><%=notice.getContent()%></textarea>
 					</div>
 					<div class="row">
 					<div class="col-sm-4">
@@ -61,7 +62,7 @@
 					<c:set var="userId" value="<%=notice.getId() %>"/>
 					<c:if test="${sessionId==userId}">
 						<p>
-						<a href="BoardDeleteAction.do?num<%=notice.getNum()%>&pageNum=<%=nowpage%>"
+						<a href="BoardDeleteAction.do?number=<%=notice.getNum()%>&pageNum=<%=nowpage%>"
 						class="btn btn-danger">삭제</a>
 						<input type="submit" class="btn btn-outline-success" value="수정">
 					</c:if>

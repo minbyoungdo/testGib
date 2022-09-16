@@ -121,13 +121,13 @@ public class BoardDAO1
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;	
-
 		String name=null;
 		String sql = "select * from users where id = ? ";
 
 		try {
 			conn = DBConnection1.getConnection();
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,name);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) 

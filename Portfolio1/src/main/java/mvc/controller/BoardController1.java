@@ -98,7 +98,7 @@ public class BoardController1 extends HttpServlet {
 	public void requestLoginName(HttpServletRequest request){
 					
 		String id = request.getParameter("id");
-		
+		String name1 = request.getParameter("name");
 		BoardDAO1  dao = BoardDAO1.getInstance();
 		
 		String name = dao.getLoginNameById(id);		
@@ -145,16 +145,15 @@ public class BoardController1 extends HttpServlet {
 	//선택된 글 내용 수정하기
 	public void requestBoardUpdate(HttpServletRequest request){
 		
-		int num = 1;
-		num=Integer.parseInt(request.getParameter("num"));
+		int	num=Integer.parseInt(request.getParameter("number"));
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));	
 		BoardDAO1 dao = BoardDAO1.getInstance();		
 		
 		BoardDTO1 board = new BoardDTO1();		
 		board.setNum(num);
 		board.setName(request.getParameter("name"));
-		board.setSubject(request.getParameter("subject"));
-		board.setContent(request.getParameter("content"));		
+		board.setSubject(request.getParameter("subject1"));
+		board.setContent(request.getParameter("content1"));		
 		
 		 java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy/MM/dd(HH:mm:ss)");
 		 String regist_day = formatter.format(new java.util.Date()); 

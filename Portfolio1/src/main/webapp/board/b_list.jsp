@@ -3,7 +3,9 @@
 <%@ page import="java.util.*"%>
 <%@ page import="mvc.model.BoardDTO1"%>
 <%
-String sessionId =(String) session.getAttribute("sessionId");
+	String sessionId =(String) session.getAttribute("sessionId");
+	/* String name = (String)request.getParameter("name");
+	System.out.println(name); */
 	List boardList = (List)request.getAttribute("boardlist1");
 	int total_record = ((Integer)request.getAttribute("total_record")).intValue();
 	int pageNum = ((Integer)request.getAttribute("pageNum")).intValue();
