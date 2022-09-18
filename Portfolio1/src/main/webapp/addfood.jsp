@@ -10,11 +10,11 @@
 <script type="text/javascript">
 function check()
 {
-    let form ="addFood";
+    let form ="addfood";
 
 if (!document.forms[form].elements["name"].value) 
 {
-	alert("이름을 입력하세요.");
+	alert("식당명을 입력하세요.");
 	return false;
 }
 if (!document.forms[form].elements["address"].value) 
@@ -27,11 +27,12 @@ if (!document.forms[form].elements["bestfood"].value)
 	alert("추천 메뉴를 입력하세요.");
 	return false;
 }
-if (!document.forms[form].elements["imagefile"].value) 
+if (!document.forms[form].elements["grade"].value) 
 {
-	alert("이미지파일을 입력하세요.");
+	alert("평점을 입력하세요.");
 	return false;
 }
+
 }
 </script>
 <title>맛집 등록 페이지</title>
@@ -44,8 +45,8 @@ if (!document.forms[form].elements["imagefile"].value)
 		</div>
 	</div>
 	<div class="container">
-		<form name="addFood" class="form-horizontal" action="processAddFood.jsp" method="post">
-			<div class="form-group row">
+		<form name="addfood" class="form-horizontal" action="./processAddFood.jsp" method="post"enctype ="multipart/form-data" onsubmit="return check()">
+			<div class="form-group row" >
 				<label class="col-sm-2">*식당명 : </label>
 				<div class="col-sm-3"><input type="text" name="name" id ="name"class="form-control" placeholder="식당명을 입력하시오." autofocus></div>			
 			</div>
@@ -75,8 +76,18 @@ if (!document.forms[form].elements["imagefile"].value)
 				<div class="col-sm-5"><textarea cols="100" rows="4"  name="Advantage" id ="Advantage" class="form-control" placeholder="식당의 장점 입력하시오." ></textarea></div>			
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2">평점 : </label>
-				<div class="col-sm-5"><input type="number" name="grade" min="0" max="5" /></div>			
+				<label class="col-sm-2">*평점 : </label>
+				<div class="col-sm-5"><input type="number"id="grade" name="grade" min="0" max="5" /></div>			
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">*식당 분류 : </label>
+					<select id ="category" name ="category">
+					<option value="100" id="category"name ="category">한식</option>
+					<option value="200" id="category"name="category">중식</option>
+					<option value="300" id="category"name ="category">일식</option>
+					<option value="400" id="category"name="category">뷔페</option>
+					<option value="500" id="category"name ="category">햄버거</option>
+					</select>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">*이미지 : </label>

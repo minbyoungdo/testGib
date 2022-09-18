@@ -1,17 +1,25 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="mvc.model.BoardDTO1"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%
 	//String name = (String) request.getAttribute("name");
 	/* BoardDTO1 notice = (BoardDTO1) request.getAttribute("board");
 	int nowpage = ((Integer) request.getAttribute("page")).intValue(); */
-	String name1 = request.getParameter("name");
+	String sessionId = (String) session.getAttribute("sessionId");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+<sql:setDataSource var="dataSource"
+url = "jdbc:oracle:thin:@WIN-U920QAV753C:1522:xe"
+driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" />
+<sql:query dataSource="${dataSource}" var="resultSet">
+SELECT * FROM USERS WHERE ID =?
+<sql:param value="<%=sessionId %>"/>
+</sql:query>
 <title>Board</title>
 </head>
 <script type="text/javascript">
@@ -36,15 +44,22 @@ function chekForm()
 			<h1 class="display-3">게시판</h1>
 		</div>
 	</div>
-	
+	<c:forEach var="row" items="${resultSet.rows}">
 	<div class="container">
-		<form name ="newWrite" action="./BoardWriteAction.do"
+		<form name ="newWrite" action="./BoardWriteAction.do?name=${row.uname}"
 		class="form-horizontal" method="post" onsubmit="return checkForm()">
 			<input name="id" type="hidden" class="form=control" value="${sessionId}">
 			<div class="form-group row">
-				<label for="title" class="form-label">작성자</label> 
-						<input type="text" class="form-control" id="name1" name="name1"
-							<%-- value="<%=name %>" --%> >
+				<label for="title" class="col-sm-2 control-label">작성자 id</label> 
+				<div class="col-sm-3">
+				<input type="text" class="form-control" id="id1" name="id1" disabled
+				value="<c:out value="${row.id}"/>" >
+				</div>
+				<label for="title" class="col-sm-2 control-label">작성자</label>
+				<div class="col-sm-3">
+				<input type="text" class="form-control" id="name12" name="name12" disabled
+				value="<c:out value="${row.uname}"/>" >
+				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">제목</label>
@@ -66,5 +81,6 @@ function chekForm()
 			</div>
 		</form>
 	</div>
+	</c:forEach>
 </body>
 </html>

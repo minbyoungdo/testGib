@@ -27,7 +27,7 @@ if (document.forms[form].elements["password"].value != document.forms[form].elem
 	alert("비밀번호를 동일하게 입력하세요.");
 	return false;
 }
-if (!document.forms[form].elements["name"].value) 
+if (!document.forms[form].elements["uname"].value) 
 {
 	alert("반드시 이름을 입력하세요.");
 	return false;

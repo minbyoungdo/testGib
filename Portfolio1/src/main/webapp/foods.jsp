@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String category=(String)request.getParameter("category");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,35 +22,18 @@
 	<div class = "row" align ="center">
 	<%@ include file="dbconn.jsp" %>
 		<%
-			String sql = "select * from food";
+			String sql = "select * from food where foodcategory = ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,category);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 		%>
-	<!-- 	<div class ="col-md-4">
-		<img src="./resources/images/P1234.png" style ="width:100%; height: auto;">
-		<h3>식당명 : </h3>
-		<p>등록번호 : </p>
-		<p>추천 메뉴(가격) : </p>
-		</div>
 		<div class ="col-md-4">
-		<img src="./resources/images/P1235.png" style ="width:100%; height: auto;">
-		<h3>식당명 : </h3>
-		<p>등록번호 : </p>
-		<p>추천 메뉴(가격) : </p>
-		</div>
-		<div class ="col-md-4">
-		<img src="./resources/images/P1236.png"style ="width:100%; height: auto;">
-		<h3>식당명 : </h3>
-		<p>등록번호 : </p>
-		<p>추천 메뉴(가격) : </p>
-		</div> -->
-		<div class ="col-md-4">
-			<img src="./upload/<%=rs.getString("iamgefile") %>" style="width:100%">
+			<img src="./resources/images/<%=rs.getString("imagefile") %>" style="width:100%">
 			<h3>식당명 :  <%=rs.getString("name")%></h3>
 			<p>추천 메뉴 : <%=rs.getString("bestfood") %></p>
 			<p>평점 : <%=rs.getString("grade") %></p>
-			<p><a href="./food.jsp?name=<%=rs.getString("name")%>" class="btn btn-info" role ="button">상제정보 &raquo;</a></p>
+			<p><a href="./food1.jsp?name=<%=rs.getString("name")%>" class="btn btn-info" role ="button">상제정보 &raquo;</a></p>
 		</div>
 		<% 
 		} 

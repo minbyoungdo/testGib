@@ -10,9 +10,12 @@
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
-<sql:setDataSource var="dataSource"
+<%-- <sql:setDataSource var="dataSource"
 url="jdbc:oracle:thin:@localhost:1521:orcl" 
-driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" />
+driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> --%>
+<sql:setDataSource var="dataSource"
+url = "jdbc:oracle:thin:@WIN-U920QAV753C:1522:xe"
+driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" />
 <sql:query dataSource="${dataSource}" var="resultSet">
 SELECT * FROM USERS WHERE ID =?
 <sql:param value="<%=sessionId %>"/>
@@ -52,7 +55,7 @@ SELECT * FROM USERS WHERE ID =?
 				</div>
 				<div class ="form-group row">
 				<label class="col-sm-2">성명 : </label>
-				<div class="col-sm-3"><input name ="name" id="name" type="text" value="<c:out value='${row.name}'/>"
+				<div class="col-sm-3"><input name ="name" id="name" type="text" value="<c:out value='${row.uname}'/>"
 				class="form-control"placeholder="성명를 입력하시오."></div>
 				</div>
 				<div class ="form-group row">

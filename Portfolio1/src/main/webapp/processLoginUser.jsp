@@ -10,9 +10,12 @@
 	String password = request.getParameter("password");
 %>
 
-<sql:setDataSource var="dataSource"
+<%-- <sql:setDataSource var="dataSource"
 	url="jdbc:oracle:thin:@localhost:1521:orcl" 
-	driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> 
+	driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" />  --%>
+	<sql:setDataSource var="dataSource"
+	url="jdbc:oracle:thin:@WIN-U920QAV753C:1522:xe"
+	driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" /> 
 
 <sql:query dataSource="${dataSource}" var="resultSet">
    SELECT * FROM USERS WHERE ID=? and password=?  

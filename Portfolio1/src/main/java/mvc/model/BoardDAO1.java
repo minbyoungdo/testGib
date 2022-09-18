@@ -159,17 +159,17 @@ public class BoardDAO1
 		try {
 			conn = DBConnection1.getConnection();		
 
-			String sql = "insert into board values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into board values(board_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, board.getNum());
-			pstmt.setString(2, board.getId());
-			pstmt.setString(3, board.getName());
-			pstmt.setString(4, board.getSubject());
-			pstmt.setString(5, board.getContent());
-			pstmt.setString(6, board.getRegist_day());
-			pstmt.setInt(7, board.getHit());
-			pstmt.setString(8, board.getIp());
+			//pstmt.setInt(1, board.getNum());
+			pstmt.setString(1, board.getId());
+			pstmt.setString(2, board.getName());
+			pstmt.setString(3, board.getSubject());
+			pstmt.setString(4, board.getContent());
+			pstmt.setString(5, board.getRegist_day());
+			pstmt.setInt(6, board.getHit());
+			pstmt.setString(7, board.getIp());
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {

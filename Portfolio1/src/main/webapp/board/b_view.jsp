@@ -4,7 +4,6 @@
 
 <%
 	BoardDTO1 notice = (BoardDTO1) request.getAttribute("board");
-	/* int number = ((Integer) request.getAttribute("num")).intValue(); */
 	int number = notice.getNum();
 	int nowpage = ((Integer) request.getAttribute("page")).intValue();
 %>
@@ -62,7 +61,7 @@
 					<c:set var="userId" value="<%=notice.getId() %>"/>
 					<c:if test="${sessionId==userId}">
 						<p>
-						<a href="BoardDeleteAction.do?number=<%=notice.getNum()%>&pageNum=<%=nowpage%>"
+						<a href="BoardDeleteAction.do?number=<%=notice.getNum()%>& pageNum=<%=nowpage%>"
 						class="btn btn-danger">삭제</a>
 						<input type="submit" class="btn btn-outline-success" value="수정">
 					</c:if>

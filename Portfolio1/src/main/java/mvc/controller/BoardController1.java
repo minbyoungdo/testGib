@@ -115,10 +115,7 @@ public class BoardController1 extends HttpServlet {
 		board.setName(request.getParameter("name"));
 		board.setSubject(request.getParameter("subject"));
 		board.setContent(request.getParameter("content"));	
-		
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("subject"));
-		System.out.println(request.getParameter("content"));
+	
 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy/MM/dd(HH:mm:ss)");
 		String regist_day = formatter.format(new java.util.Date()); 
 		
@@ -167,8 +164,8 @@ public class BoardController1 extends HttpServlet {
 	//선택된 글 삭제하기
 	public void requestBoardDelete(HttpServletRequest request){
 					
-		int num = Integer.parseInt(request.getParameter("num"));
-		int pageNum = Integer.parseInt(request.getParameter("pageNum"));	
+		int num = Integer.parseInt(request.getParameter("number"));
+		//int pageNum = Integer.parseInt(request.getParameter("pageNum"));	
 		
 		BoardDAO1 dao = BoardDAO1.getInstance();
 		dao.deleteBoard(num);							
