@@ -10,12 +10,12 @@
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
-<%-- <sql:setDataSource var="dataSource"
-url="jdbc:oracle:thin:@localhost:1521:orcl" 
-driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> --%>
 <sql:setDataSource var="dataSource"
+url="jdbc:oracle:thin:@localhost:1521:orcl" 
+driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" />
+<%-- <sql:setDataSource var="dataSource"
 url = "jdbc:oracle:thin:@WIN-U920QAV753C:1522:xe"
-driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" />
+driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" /> --%>
 <sql:query dataSource="${dataSource}" var="resultSet">
 SELECT * FROM USERS WHERE ID =?
 <sql:param value="<%=sessionId %>"/>
@@ -42,21 +42,17 @@ SELECT * FROM USERS WHERE ID =?
 			<div class="form-group row">
 				<label class="col-sm-2">아이디 : </label>
 				<div class="col-sm-3"><input type="text" name="id" id="id" class="form-control"  value="<c:out value='${row.id}'/>"
-				placeholder="아이디를 입력하시오." autofocus></div>
+				placeholder="아이디를 입력하시오."disabled ></div>
 			</div>
 				<div class ="form-group row">
 				<label class="col-sm-2">비밀번호 : </label>
 				<div class="col-sm-3"><input name ="password" id="password" type="password" value ="<c:out value='${row.password}'/>"
-				 class="form-control"placeholder="비밀번호를 입력하시오."></div>
-				</div>
-				<div class ="form-group row">
-				<label class="col-sm-2">비밀번호 확인 : </label>
-				<div class="col-sm-3"><input name ="password_confirm" id="password_confirm" type="password" class="form-control" placeholder="비밀번호를 다시 입력하시오."></div>
+				 class="form-control"disabled></div>
 				</div>
 				<div class ="form-group row">
 				<label class="col-sm-2">성명 : </label>
-				<div class="col-sm-3"><input name ="name" id="name" type="text" value="<c:out value='${row.uname}'/>"
-				class="form-control"placeholder="성명를 입력하시오."></div>
+				<div class="col-sm-3"><input name ="name" id="name" type="text" value="<c:out value='${row.name}'/>"
+				class="form-control" disabled></div>
 				</div>
 				<div class ="form-group row">
 				<label class="col-sm-2">성별 : </label>

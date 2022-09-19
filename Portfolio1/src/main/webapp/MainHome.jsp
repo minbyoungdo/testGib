@@ -10,12 +10,12 @@
 <%
 	String sessionId2 = (String) session.getAttribute("sessionId");
 %>
-<%-- <sql:setDataSource var="dataSource"
-url="jdbc:oracle:thin:@localhost:1521:orcl" 
-driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" /> --%>
 <sql:setDataSource var="dataSource"
+url="jdbc:oracle:thin:@localhost:1521:orcl" 
+driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" />
+<%-- <sql:setDataSource var="dataSource"
 url = "jdbc:oracle:thin:@WIN-U920QAV753C:1522:xe"
-driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" />
+driver="oracle.jdbc.driver.OracleDriver" user="sc" password="1234" /> --%>
 <sql:query dataSource="${dataSource}" var="resultSet">
 SELECT * FROM USERS WHERE ID =?
 <sql:param value="<%=sessionId2 %>"/>
@@ -50,19 +50,19 @@ SELECT * FROM USERS WHERE ID =?
 <div class= "container">
 	<div class = "row" align ="center">
 		<div class ="col-md-4">
-			<a href="./foods.jsp?category=100"><img src="./resources/images/P1234.png" style="width:100%"></a>
+			<a href="./foods.jsp?category=100"><img src="./resources/images/p2.PNG" style="width:360px; height:250px"></a>
 		</div>
 		<div class ="col-md-4">
-			<a href="./foods.jsp?category=100"><img src="./resources/images/P1234.png" style="width:100%"></a>
+			<a href="./foods.jsp?category=200"><img src="./resources/images/p6.PNG" style="width:360px; height:250px"></a>
 		</div>
 		<div class ="col-md-4">
-			<a href="./foods.jsp?category=100"><img src="./resources/images/P1234.png" style="width:100%"></a>
+			<a href="./foods.jsp?category=300"><img src="./resources/images/p9.PNG" style="width:360px; height:250px"></a>
 		</div>
 		<div class ="col-md-4">
-			<a href="./foods.jsp?category=100"><img src="./resources/images/P1234.png" style="width:100%"></a>
+			<a href="./foods.jsp?category=400"><img src="./resources/images/p11.PNG" style="width:360px; height:250px"></a>
 		</div>
 		<div class ="col-md-4">
-			<a href="./foods.jsp?category=100"><img src="./resources/images/P1234.png" style="width:100%"></a>
+			<a href="./foods.jsp?category=500"><img src="./resources/images/p16.PNG" style="width:360px; height:250px"></a>
 		</div>
 	</div>
 	<hr>

@@ -18,6 +18,19 @@
 		<h1 class ="display-3">식당 목록</h1>
 	</div>
 </div>
+<nav class ="navbar navbar-expand navbar-dark bg-primary">
+	<div class="container">
+		<div>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class ="nav-link" href="./foods.jsp?category=100">한식</a></li>
+				<li class="nav-item"><a class="nav-link" href="./foods.jsp?category=200">중식</a></li>
+				<li class="nav-item"><a class="nav-link" href="./foods.jsp?category=300">일식/돈까스</a></li>
+				<li class="nav-item"><a class="nav-link" href="./foods.jsp?category=400">뷔페</a></li>
+				<li class="nav-item"><a class="nav-link" href="./foods.jsp?category=500">햄버거</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
 <div class= "container">
 	<div class = "row" align ="center">
 	<%@ include file="dbconn.jsp" %>
@@ -29,7 +42,7 @@
 			while(rs.next()){
 		%>
 		<div class ="col-md-4">
-			<img src="./resources/images/<%=rs.getString("imagefile") %>" style="width:100%">
+			<img src="./upload/<%=rs.getString("imagefile") %>" style="width:350px; height:250px">
 			<h3>식당명 :  <%=rs.getString("name")%></h3>
 			<p>추천 메뉴 : <%=rs.getString("bestfood") %></p>
 			<p>평점 : <%=rs.getString("grade") %></p>

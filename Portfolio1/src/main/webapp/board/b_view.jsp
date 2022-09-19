@@ -1,16 +1,24 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="mvc.model.BoardDTO1"%>
-
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%
 	BoardDTO1 notice = (BoardDTO1) request.getAttribute("board");
 	int number = notice.getNum();
 	int nowpage = ((Integer) request.getAttribute("page")).intValue();
+	String sessionId1 = (String) session.getAttribute("sessionId");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+<sql:setDataSource var="dataSource"
+url="jdbc:oracle:thin:@localhost:1521:orcl" 
+driver="oracle.jdbc.driver.OracleDriver" user="market" password="market" />
+<sql:query dataSource="${dataSource}" var="resultSet">
+SELECT * FROM USERS WHERE ID =?
+<sql:param value="<%=sessionId1 %>"/>
+</sql:query>
 <title>Board</title>
 </head>
 <body class="sb-nav-fixed">
@@ -62,9 +70,17 @@
 					<c:if test="${sessionId==userId}">
 						<p>
 						<a href="BoardDeleteAction.do?number=<%=notice.getNum()%>& pageNum=<%=nowpage%>"
-						class="btn btn-danger">삭제</a>
+						class="btn btn-outline-danger">삭제</a>
 						<input type="submit" class="btn btn-outline-success" value="수정">
 					</c:if>
+					<c:forEach var="row" items="${resultSet.rows}">
+					<c:if test="${row.power==1}">
+						<p>
+						<a href="BoardDeleteAction.do?number=<%=notice.getNum()%>& pageNum=<%=nowpage%>"
+						class="btn btn-outline-danger">삭제</a>
+						<input type="submit" class="btn btn-outline-success" value="수정">
+					</c:if>
+					</c:forEach>
 					<a href="./BoardListAction.do?pageNum=<%=nowpage %>" class="btn btn-outline-primary">목록</a>
 					</div>
 					</div>
